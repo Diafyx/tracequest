@@ -1,9 +1,10 @@
 import { create } from 'zustand'
-import { scenarios, scenarioById } from '../data/scenarios'
+import { scenarios, scenarioById, tools, toolById } from '../data/scenarios'
 import { evaluateAchievements } from '../data/achievements'
 import type { ScenarioProgress } from '../types/simulation'
 
 interface SimulationState {
+  activeToolId: string
   activeScenarioId: string
   progress: Record<string, ScenarioProgress>
   isPlaying: boolean
@@ -11,6 +12,7 @@ interface SimulationState {
   unlockedAchievementIds: string[]
   justUnlocked: string | null
 
+  setActiveTool: (id: string) => void
   setActiveScenario: (id: string) => void
   play: () => void
   pause: () => void
@@ -36,16 +38,24 @@ function checkAchievements(progress: Record<string, ScenarioProgress>, prevUnloc
 }
 
 export const useSimulationStore = create<SimulationState>((set, get) => ({
-  activeScenarioId: scenarios[0].id,
+  activeToolId: tools[0].id,
+  activeScenarioId: tools[0].scenarios[0].id,
   progress: initialProgress(),
   isPlaying: false,
   speedMs: 1400,
   unlockedAchievementIds: [],
   justUnlocked: null,
 
+  setActiveTool: (id) => {
+    const tool = toolById[id]
+    if (!tool) return
+    set({ activeToolId: id, activeScenarioId: tool.scenarios[0].id, isPlaying: false })
+  },
+
   setActiveScenario: (id) => {
-    if (!scenarioById[id]) return
-    set({ activeScenarioId: id, isPlaying: false })
+    const scenario = scenarioById[id]
+    if (!scenario) return
+    set({ activeToolId: scenario.toolId, activeScenarioId: id, isPlaying: false })
   },
 
   play: () => {
@@ -127,6 +137,10 @@ export const useSimulationStore = create<SimulationState>((set, get) => ({
 
 export function useActiveScenario() {
   return useSimulationStore((s) => scenarioById[s.activeScenarioId])
+}
+
+export function useActiveTool() {
+  return useSimulationStore((s) => toolById[s.activeToolId])
 }
 
 export function useActiveProgress() {

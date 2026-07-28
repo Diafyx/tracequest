@@ -17,13 +17,14 @@ export const achievementDefs: AchievementDef[] = [
   {
     id: 'first_step',
     title: 'First Contact',
-    description: 'Watched your first step of real PostgreSQL internals.',
+    description: 'Watched your first step of real systems internals.',
     condition: { type: 'first_step' },
   },
   {
     id: 'wal_before_data',
-    title: 'WAL-Before-Data',
-    description: "Watched Postgres write its diary entry before the real data — the core durability rule.",
+    title: 'Log Before Data',
+    description:
+      'Watched a database write its durability log before touching the real data — the universal durability rule, seen in both Postgres and Cassandra.',
     condition: { type: 'insight', tag: 'wal_before_data' },
   },
   {
@@ -81,10 +82,29 @@ export const achievementDefs: AchievementDef[] = [
     condition: { type: 'scenario_complete', scenarioId: 'delete' },
   },
   {
-    id: 'all_complete',
-    title: 'SQL Internals Master',
+    id: 'hinted_handoff',
+    title: 'The IOU System',
+    description: 'Watched Cassandra write a hint for an offline replica instead of blocking your write on it.',
+    condition: { type: 'insight', tag: 'hinted_handoff' },
+  },
+  {
+    id: 'quorum_ack',
+    title: 'Strength In Numbers',
     description:
-      'Completed every operation — INSERT, indexed INSERT, SELECT, UPDATE, and DELETE — from source code to disk.',
+      "Learned that Cassandra's real durability comes from multiple independent machines agreeing, not a single disk fsync.",
+    condition: { type: 'insight', tag: 'quorum_ack' },
+  },
+  {
+    id: 'complete_cassandra_write',
+    title: 'Ring Walker',
+    description: 'Traced a full Cassandra write end to end — token routing, replication, and hinted handoff.',
+    condition: { type: 'scenario_complete', scenarioId: 'cassandra_write' },
+  },
+  {
+    id: 'all_complete',
+    title: 'Systems Internals Master',
+    description:
+      'Completed every operation across every tool — PostgreSQL and Cassandra alike — from source code to disk.',
     condition: { type: 'all_complete' },
   },
 ]

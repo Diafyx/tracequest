@@ -19,7 +19,7 @@ export default function NowExecuting({ scenario, currentStep }: { scenario: Scen
             className="text-slate-500 text-center"
           >
             Press <span className="text-cyan-400 font-semibold">Play</span> to trace {scenario.tabLabel} through
-            real PostgreSQL source code…
+            real source code…
           </motion.div>
         ) : (
           <motion.div

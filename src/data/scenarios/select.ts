@@ -233,6 +233,7 @@ const stations: Station[] = [
 
 export const selectScenario: Scenario = {
   id: 'select',
+  toolId: 'postgres',
   tabLabel: 'SELECT',
   title: 'SELECT * FROM accounts WHERE id = 42',
   subtitle:

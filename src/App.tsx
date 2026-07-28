@@ -8,9 +8,11 @@ import PlaybackControls from './components/PlaybackControls'
 import GamificationBar from './components/GamificationBar'
 import CompletionOverlay from './components/CompletionOverlay'
 import ScenarioTabs from './components/ScenarioTabs'
-import { useActiveProgress, useActiveScenario, useSimulationStore } from './store/simulationStore'
+import ToolTabs from './components/ToolTabs'
+import { useActiveProgress, useActiveScenario, useActiveTool, useSimulationStore } from './store/simulationStore'
 
 function App() {
+  const tool = useActiveTool()
   const scenario = useActiveScenario()
   const progress = useActiveProgress()
   const currentStep = progress.currentStep
@@ -69,14 +71,17 @@ function App() {
       <header className="px-6 py-3 border-b border-slate-800 flex items-center justify-between gap-4 shrink-0">
         <h1 className="text-lg font-bold tracking-tight shrink-0">
           <span className="text-cyan-400">TraceQuest</span>
-          <span className="text-slate-500 font-medium"> — PostgreSQL Internals</span>
         </h1>
-        <ScenarioTabs />
+        <ToolTabs />
         <div className="text-xs text-slate-600 font-mono shrink-0 text-right">
-          <div>PostgreSQL ~v16 internals</div>
+          <div>{tool.title}</div>
           <div className="text-slate-700">space play/pause · ←/→ step · r reset</div>
         </div>
       </header>
+
+      <div className="px-6 pt-3 shrink-0">
+        <ScenarioTabs />
+      </div>
 
       <div className="px-6 pt-3 shrink-0">
         <h2 className="text-sm font-semibold text-slate-200">{scenario.title}</h2>

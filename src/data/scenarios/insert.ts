@@ -343,6 +343,7 @@ const stations: Station[] = [
 
 export const insertScenario: Scenario = {
   id: 'insert',
+  toolId: 'postgres',
   tabLabel: 'INSERT',
   title: 'INSERT INTO accounts VALUES (...)',
   subtitle:

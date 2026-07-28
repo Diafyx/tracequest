@@ -1,17 +1,5 @@
-export type NodeId =
-  | 'client'
-  | 'parser'
-  | 'analyzer'
-  | 'rewriter'
-  | 'planner'
-  | 'executor'
-  | 'lock_manager'
-  | 'shared_buffers'
-  | 'wal_buffers'
-  | 'wal_disk'
-  | 'heap_file'
-  | 'bgwriter'
-  | 'index'
+/** Component-map node id. Each tool defines its own set (see data/components.ts). */
+export type NodeId = string
 
 export type StepPhase =
   | 'parse'
@@ -46,6 +34,7 @@ export interface Station {
 
 export interface Scenario {
   id: string
+  toolId: string
   tabLabel: string
   title: string
   subtitle: string
@@ -59,4 +48,12 @@ export interface Scenario {
 export interface ScenarioProgress {
   currentStep: number
   maxStepReached: number
+}
+
+export interface Tool {
+  id: string
+  label: string
+  title: string
+  subtitle: string
+  scenarios: Scenario[]
 }

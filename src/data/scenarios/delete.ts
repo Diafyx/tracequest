@@ -299,6 +299,7 @@ const stations: Station[] = [
 
 export const deleteScenario: Scenario = {
   id: 'delete',
+  toolId: 'postgres',
   tabLabel: 'DELETE',
   title: 'DELETE FROM accounts WHERE id = 42',
   subtitle:

@@ -2,6 +2,7 @@ import {
   Cpu,
   Database,
   HardDrive,
+  Inbox,
   Layers,
   ListTree,
   Lock,
@@ -12,6 +13,7 @@ import {
   ScanText,
   ScrollText,
   SearchCode,
+  Server,
   type LucideIcon,
 } from 'lucide-react'
 import type { NodeId } from '../types/simulation'
@@ -28,7 +30,7 @@ export interface ComponentZone {
   items: ComponentInfo[]
 }
 
-export const componentZones: ComponentZone[] = [
+const postgresZones: ComponentZone[] = [
   {
     title: 'Client',
     items: [{ id: 'client', label: 'Client', sublabel: 'psql / your app', icon: Monitor }],
@@ -69,8 +71,46 @@ export const componentZones: ComponentZone[] = [
   },
   {
     title: 'Maintenance',
-    items: [
-      { id: 'bgwriter', label: 'Background Writer', sublabel: 'tidies up later', icon: RotateCw },
-    ],
+    items: [{ id: 'bgwriter', label: 'Background Writer', sublabel: 'tidies up later', icon: RotateCw }],
   },
 ]
+
+const cassandraZones: ComponentZone[] = [
+  {
+    title: 'Client',
+    items: [{ id: 'cass_client', label: 'Client', sublabel: 'driver / cqlsh', icon: Monitor }],
+  },
+  {
+    title: 'Query Processing',
+    items: [{ id: 'query_processor', label: 'Query Processor', sublabel: 'parses CQL', icon: ScanText }],
+  },
+  {
+    title: 'Coordinator',
+    items: [{ id: 'coordinator', label: 'Coordinator', sublabel: 'StorageProxy', icon: Route }],
+  },
+  {
+    title: 'Replicas (RF=3)',
+    items: [
+      { id: 'replica_a', label: 'Replica A', sublabel: 'one of 3 copies', icon: Server },
+      { id: 'replica_b', label: 'Replica B', sublabel: 'one of 3 copies', icon: Server },
+      { id: 'replica_c', label: 'Replica C', sublabel: 'currently offline', icon: Server },
+    ],
+  },
+  {
+    title: 'Per-Replica Storage',
+    items: [
+      { id: 'commit_log', label: 'Commit Log', sublabel: 'durability log, on disk', icon: ScrollText },
+      { id: 'memtable', label: 'Memtable', sublabel: 'sorted data, in RAM', icon: Layers },
+      { id: 'sstable', label: 'SSTable', sublabel: 'immutable file, on disk', icon: Database },
+    ],
+  },
+  {
+    title: 'Resilience',
+    items: [{ id: 'hints_service', label: 'Hints Service', sublabel: 'IOUs for offline nodes', icon: Inbox }],
+  },
+]
+
+export const componentZonesByTool: Record<string, ComponentZone[]> = {
+  postgres: postgresZones,
+  cassandra: cassandraZones,
+}
