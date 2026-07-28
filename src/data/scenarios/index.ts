@@ -6,6 +6,9 @@ import { updateScenario } from './update'
 import { deleteScenario } from './delete'
 import { cassandraWriteScenario } from './cassandraWrite'
 import { cassandraReadScenario } from './cassandraRead'
+import { cassandraDeleteScenario } from './cassandraDelete'
+import { cassandraLwtScenario } from './cassandraLwt'
+import { cassandraCompactionScenario } from './cassandraCompaction'
 
 export const scenarios: Scenario[] = [
   insertScenario,
@@ -15,6 +18,9 @@ export const scenarios: Scenario[] = [
   deleteScenario,
   cassandraWriteScenario,
   cassandraReadScenario,
+  cassandraDeleteScenario,
+  cassandraLwtScenario,
+  cassandraCompactionScenario,
 ]
 
 export const scenarioById: Record<string, Scenario> = Object.fromEntries(scenarios.map((s) => [s.id, s]))
@@ -32,7 +38,13 @@ export const tools: Tool[] = [
     label: 'Cassandra',
     title: 'Cassandra Internals',
     subtitle: 'A distributed, replicated, eventually-consistent wide-column store.',
-    scenarios: [cassandraWriteScenario, cassandraReadScenario],
+    scenarios: [
+      cassandraWriteScenario,
+      cassandraReadScenario,
+      cassandraDeleteScenario,
+      cassandraLwtScenario,
+      cassandraCompactionScenario,
+    ],
   },
 ]
 

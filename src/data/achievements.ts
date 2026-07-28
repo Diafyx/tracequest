@@ -119,6 +119,48 @@ export const achievementDefs: AchievementDef[] = [
     condition: { type: 'scenario_complete', scenarioId: 'cassandra_read' },
   },
   {
+    id: 'delete_is_write',
+    title: "It's Just a Write",
+    description: 'Realized Cassandra has no special delete mechanism — a DELETE is just another write, storing a tombstone instead of a value.',
+    condition: { type: 'insight', tag: 'delete_is_write' },
+  },
+  {
+    id: 'tombstone_gc_grace',
+    title: 'The Grace Period',
+    description: 'Understood why Cassandra waits gc_grace_seconds before purging a tombstone — protecting against deleted rows silently coming back to life.',
+    condition: { type: 'insight', tag: 'tombstone_gc_grace' },
+  },
+  {
+    id: 'complete_cassandra_delete',
+    title: 'Tombstone Setter',
+    description: 'Traced a full Cassandra delete end to end — tombstones, the grace period, and eventual purging.',
+    condition: { type: 'scenario_complete', scenarioId: 'cassandra_delete' },
+  },
+  {
+    id: 'paxos_quorum',
+    title: 'Consensus Reached',
+    description: 'Watched Cassandra run a full two-round Paxos protocol just to safely check one condition — the price of linearizable consistency in an eventually-consistent system.',
+    condition: { type: 'insight', tag: 'paxos_quorum' },
+  },
+  {
+    id: 'complete_cassandra_lwt',
+    title: 'The Tiebreaker',
+    description: 'Traced a full Cassandra lightweight transaction end to end — two rounds of Paxos consensus for one linearizable write.',
+    condition: { type: 'scenario_complete', scenarioId: 'cassandra_lwt' },
+  },
+  {
+    id: 'tombstone_purge',
+    title: 'Garbage Collected',
+    description: 'Watched compaction permanently erase a tombstone and the data it deleted, once the safety window had passed.',
+    condition: { type: 'insight', tag: 'tombstone_purge' },
+  },
+  {
+    id: 'complete_cassandra_compaction',
+    title: 'Space Reclaimer',
+    description: 'Traced a full compaction cycle end to end — merging SSTables, dropping stale versions, and purging expired tombstones.',
+    condition: { type: 'scenario_complete', scenarioId: 'cassandra_compaction' },
+  },
+  {
     id: 'all_complete',
     title: 'Systems Internals Master',
     description:

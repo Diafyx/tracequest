@@ -4,6 +4,7 @@ import {
   HardDrive,
   Inbox,
   Layers,
+  ListChecks,
   ListTree,
   Lock,
   Monitor,
@@ -107,6 +108,10 @@ const cassandraZones: ComponentZone[] = [
   {
     title: 'Resilience',
     items: [{ id: 'hints_service', label: 'Hints Service', sublabel: 'IOUs for offline nodes', icon: Inbox }],
+  },
+  {
+    title: 'Consensus',
+    items: [{ id: 'paxos_log', label: 'Paxos Log', sublabel: 'system.paxos table', icon: ListChecks }],
   },
 ]
 
