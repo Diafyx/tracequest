@@ -337,6 +337,7 @@ const stations: Station[] = [
 
 export const updateScenario: Scenario = {
   id: 'update',
+  toolId: 'postgres',
   tabLabel: 'UPDATE',
   title: 'UPDATE accounts SET balance = balance + 100 WHERE id = 42',
   subtitle:

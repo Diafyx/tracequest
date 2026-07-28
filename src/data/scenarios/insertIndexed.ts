@@ -404,6 +404,7 @@ const stations: Station[] = [
 
 export const insertIndexedScenario: Scenario = {
   id: 'insert_indexed',
+  toolId: 'postgres',
   tabLabel: 'INSERT (indexed)',
   title: 'INSERT INTO accounts VALUES (...) — with an index',
   subtitle:

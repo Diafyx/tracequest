@@ -3,13 +3,15 @@ import { scenarios } from '../data/scenarios'
 import { useSimulationStore } from '../store/simulationStore'
 
 export default function ScenarioTabs() {
+  const activeToolId = useSimulationStore((s) => s.activeToolId)
   const activeScenarioId = useSimulationStore((s) => s.activeScenarioId)
   const progress = useSimulationStore((s) => s.progress)
   const setActiveScenario = useSimulationStore((s) => s.setActiveScenario)
+  const toolScenarios = scenarios.filter((s) => s.toolId === activeToolId)
 
   return (
     <div className="flex flex-wrap gap-2">
-      {scenarios.map((scenario) => {
+      {toolScenarios.map((scenario) => {
         const active = scenario.id === activeScenarioId
         const p = progress[scenario.id]
         const complete = p && p.maxStepReached >= scenario.steps.length

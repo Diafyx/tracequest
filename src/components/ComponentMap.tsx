@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { componentZones } from '../data/components'
+import { componentZonesByTool } from '../data/components'
 import { phaseHex } from '../data/phaseTheme'
 import type { Scenario } from '../types/simulation'
 
@@ -7,6 +7,7 @@ export default function ComponentMap({ scenario, currentStep }: { scenario: Scen
   const activeStep = currentStep > 0 ? scenario.steps[currentStep - 1] : null
   const activeNode = activeStep?.activeNode ?? null
   const hex = activeStep ? phaseHex[activeStep.phase] : '#22d3ee'
+  const componentZones = componentZonesByTool[scenario.toolId] ?? []
 
   return (
     <div className="rounded-2xl border border-slate-800 bg-slate-900/40 px-4 py-3">

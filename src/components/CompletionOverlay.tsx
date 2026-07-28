@@ -49,12 +49,12 @@ export default function CompletionOverlay({
               <PartyPopper size={26} />
             </div>
             <h2 className="text-xl font-bold text-slate-100">
-              {allComplete ? 'You mastered SQL internals' : `You traced the whole ${scenario.tabLabel}`}
+              {allComplete ? 'You mastered systems internals' : `You traced the whole ${scenario.tabLabel}`}
             </h2>
             <p className="text-slate-400 text-sm mt-2 leading-relaxed">
               {allComplete
-                ? 'INSERT, indexed INSERT, SELECT, UPDATE, and DELETE — every operation, every real function, from source code to disk.'
-                : `${scenario.steps.length} real PostgreSQL functions, in the exact order they actually run.`}
+                ? 'Every operation, across every tool — PostgreSQL and Cassandra alike — every real function, from source code to disk.'
+                : `${scenario.steps.length} real functions, in the exact order they actually run.`}
             </p>
             <div className="flex justify-center gap-8 mt-5">
               <div>
