@@ -101,6 +101,24 @@ export const achievementDefs: AchievementDef[] = [
     condition: { type: 'scenario_complete', scenarioId: 'cassandra_write' },
   },
   {
+    id: 'bloom_filter_skip',
+    title: 'Filter First',
+    description: 'Watched Cassandra skip an entire file without opening it, thanks to a bloom filter\'s confident "no."',
+    condition: { type: 'insight', tag: 'bloom_filter_skip' },
+  },
+  {
+    id: 'read_repair',
+    title: 'Self-Healing',
+    description: 'Watched Cassandra notice two replicas disagreed and quietly fix the stale one, with no error ever shown.',
+    condition: { type: 'insight', tag: 'read_repair' },
+  },
+  {
+    id: 'complete_cassandra_read',
+    title: 'Quorum Seeker',
+    description: 'Traced a full Cassandra read end to end — digest optimization, bloom filters, and read repair.',
+    condition: { type: 'scenario_complete', scenarioId: 'cassandra_read' },
+  },
+  {
     id: 'all_complete',
     title: 'Systems Internals Master',
     description:
