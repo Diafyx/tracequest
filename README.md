@@ -2,7 +2,7 @@
 
 Watch real systems run, one source-level step at a time. TraceQuest is a browser-based simulator that walks through the exact internal execution path of database and distributed-systems operations — reproduced faithfully from real source code, with plain-English explanations for every step.
 
-[![CI](https://github.com/GlassBoxStudio/tracequest/actions/workflows/ci.yml/badge.svg)](https://github.com/GlassBoxStudio/tracequest/actions/workflows/ci.yml)
+[![CI](https://github.com/Diafyx/tracequest/actions/workflows/ci.yml/badge.svg)](https://github.com/Diafyx/tracequest/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 **Live demo:** https://tracequest-d0m.pages.dev
@@ -36,7 +36,7 @@ More tools and operations are added incrementally; each lives as a self-containe
 Requires Node.js 24 LTS (pinned in [`.nvmrc`](.nvmrc); 22.12+ also works).
 
 ```bash
-git clone https://github.com/GlassBoxStudio/tracequest.git
+git clone https://github.com/Diafyx/tracequest.git
 cd tracequest
 npm ci
 npm run dev
@@ -56,9 +56,9 @@ npm run dev
 
 ## Contributing
 
-Issues and pull requests are welcome. Please read the [contributing guide](https://github.com/GlassBoxStudio/.github/blob/main/CONTRIBUTING.md) first, and open an issue before starting anything larger than a small fix.
+Issues and pull requests are welcome. Please read the [contributing guide](https://github.com/Diafyx/.github/blob/main/CONTRIBUTING.md) first, and open an issue before starting anything larger than a small fix.
 
-To report a security vulnerability, follow the [security policy](https://github.com/GlassBoxStudio/.github/blob/main/SECURITY.md). Please do not open a public issue.
+To report a security vulnerability, follow the [security policy](https://github.com/Diafyx/.github/blob/main/SECURITY.md). Please do not open a public issue.
 
 ## License
 
