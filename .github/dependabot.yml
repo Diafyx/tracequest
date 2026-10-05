@@ -9,6 +9,11 @@ updates:
     commit-message:
       prefix: deps
       prefix-development: deps-dev
+    ignore:
+      # Keep Node type definitions on the same major as the runtime in .nvmrc;
+      # bump both together by hand.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
     groups:
       production:
         dependency-type: production
