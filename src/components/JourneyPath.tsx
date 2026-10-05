@@ -141,7 +141,7 @@ export default function JourneyPath({ scenario, currentStep }: { scenario: Scena
         const pt = mainPoints[i]
         return (
           <motion.div
-            key={st.phase}
+            key={`${st.phase}-${st.title}`}
             style={{ left: `${(pt.x / VB_W) * 100}%`, top: `${(pt.y / VB_H) * 100}%` }}
             className="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1.5 w-24"
             animate={state === 'current' ? { scale: [1, 1.12, 1] } : { scale: 1 }}
@@ -213,7 +213,7 @@ export default function JourneyPath({ scenario, currentStep }: { scenario: Scena
       )}
 
       {!inBackground && currentStep > 0 && (
-        <div className="absolute bottom-1 right-3 text-[10px] font-mono text-slate-600">
+        <div className="absolute bottom-1 left-3 text-[10px] font-mono text-slate-600">
           critical path {Math.min(currentStep, scenario.criticalPathEnd)}/{scenario.criticalPathEnd}
         </div>
       )}
