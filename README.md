@@ -2,7 +2,10 @@
 
 Watch real systems run, one source-level step at a time. TraceQuest is a browser-based simulator that walks through the exact internal execution path of database and distributed-systems operations — reproduced faithfully from real source code, with plain-English explanations for every step.
 
-![CI](https://github.com/GlassBoxStudio/tracequest/actions/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/GlassBoxStudio/tracequest/actions/workflows/ci.yml/badge.svg)](https://github.com/GlassBoxStudio/tracequest/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+**Live demo:** https://tracequest-d0m.pages.dev
 
 ## Overview
 
@@ -12,8 +15,10 @@ Progress carries XP and achievements across every tool, so learning one system's
 
 ## Tools
 
-- **PostgreSQL** — INSERT, indexed INSERT, SELECT, UPDATE, DELETE, tracing MVCC, WAL, heap pages, and B-tree maintenance against real Postgres source.
-- **Cassandra** — single-row WRITE, tracing token routing, replica selection, QUORUM consistency, commit log + memtable writes, and hinted handoff for offline replicas.
+| Tool | Operations | What you see | Traced against |
+|---|---|---|---|
+| **PostgreSQL** | INSERT, indexed INSERT, SELECT, UPDATE, DELETE | MVCC visibility, WAL, heap pages, B-tree maintenance | PostgreSQL ~v16 |
+| **Cassandra** | WRITE, READ, DELETE, lightweight transaction (LWT), compaction | Token routing, QUORUM consistency, commit log + memtable, hinted handoff, bloom filters, read repair, tombstones and `gc_grace_seconds`, Paxos, SSTable compaction | Apache Cassandra ~v4.x |
 
 More tools and operations are added incrementally; each lives as a self-contained scenario, so the list above will grow.
 
@@ -24,13 +29,16 @@ More tools and operations are added incrementally; each lives as a self-containe
 - Zustand for state
 - Framer Motion for animation
 - Hand-built SVG journey-path visualization (no graph/diagramming library)
+- Vitest for tests
 
 ## Getting Started
 
+Requires Node.js 24 LTS (pinned in [`.nvmrc`](.nvmrc); 22.12+ also works).
+
 ```bash
-git clone git@github.com:GlassBoxStudio/tracequest.git
+git clone https://github.com/GlassBoxStudio/tracequest.git
 cd tracequest
-npm install
+npm ci
 npm run dev
 ```
 
@@ -40,9 +48,18 @@ npm run dev
 |---|---|
 | `npm run dev` | Start the local dev server with hot reload |
 | `npm run build` | Type-check and produce a production build |
+| `npm run typecheck` | Type-check only |
 | `npm run lint` | Run oxlint |
+| `npm test` | Run the test suite once |
+| `npm run test:watch` | Run tests in watch mode |
 | `npm run preview` | Preview the production build locally |
+
+## Contributing
+
+Issues and pull requests are welcome. Please read the [contributing guide](https://github.com/GlassBoxStudio/.github/blob/main/CONTRIBUTING.md) first, and open an issue before starting anything larger than a small fix.
+
+To report a security vulnerability, follow the [security policy](https://github.com/GlassBoxStudio/.github/blob/main/SECURITY.md). Please do not open a public issue.
 
 ## License
 
-MIT © [GlassBoxStudio](https://github.com/GlassBoxStudio)
+[MIT](LICENSE) © Sepuri Sai Krishna
