@@ -5,13 +5,13 @@
   "description": "Watch real systems run, one source-level step at a time: a browser-based simulator of database and distributed-systems internals.",
   "license": "MIT",
   "author": "Sepuri Sai Krishna (https://github.com/SEPURI-SAI-KRISHNA)",
-  "homepage": "https://github.com/GlassBoxStudio/tracequest#readme",
+  "homepage": "https://github.com/Diafyx/tracequest#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GlassBoxStudio/tracequest.git"
+    "url": "git+https://github.com/Diafyx/tracequest.git"
   },
   "bugs": {
-    "url": "https://github.com/GlassBoxStudio/tracequest/issues"
+    "url": "https://github.com/Diafyx/tracequest/issues"
   },
   "type": "module",
   "engines": {
