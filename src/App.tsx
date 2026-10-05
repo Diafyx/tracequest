@@ -51,7 +51,8 @@ function App() {
     function handleKey(e: KeyboardEvent) {
       if (e.code === 'Space') {
         e.preventDefault()
-        isPlaying ? pause() : play()
+        if (isPlaying) pause()
+        else play()
       } else if (e.code === 'ArrowRight') {
         e.preventDefault()
         stepForward()
