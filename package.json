@@ -1,7 +1,7 @@
 {
   "name": "tracequest",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Watch real systems run, one source-level step at a time: a browser-based simulator of database and distributed-systems internals.",
   "license": "MIT",
   "author": "Sepuri Sai Krishna (https://github.com/SEPURI-SAI-KRISHNA)",
